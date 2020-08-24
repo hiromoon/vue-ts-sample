@@ -1,19 +1,12 @@
 <template>
-  <v-app>
-    <router-view />
-  </v-app>
+  <h1>Users > id: {{ id }}</h1>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "App",
-
-  components: {},
-
-  data: () => ({
-    //
-  })
+  name: "UserPage",
+  props: ["id"]
 });
 </script>
