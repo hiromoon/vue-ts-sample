@@ -10,10 +10,9 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "users" */ "../pages/UsersPage.vue")
   },
   {
-    path: "/users/:id",
+    path: "*",
     component: () =>
-      import(/* webpackChunkName: "user" */ "../pages/UserPage.vue"),
-    props: true
+      import(/* webpackChunkName: "user" */ "../pages/NotFoundErrorPage.vue")
   }
 ];
 
