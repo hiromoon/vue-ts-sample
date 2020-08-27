@@ -5,9 +5,7 @@
         <li>Users</li>
       </ul>
     </v-navigation-drawer>
-    <v-app-bar app>
-      <h1>Header</h1>
-    </v-app-bar>
+    <Header />
     <v-main>
       <v-container fluid>
         <router-view />
@@ -18,11 +16,14 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Header from "./components/Header.vue";
 
 export default Vue.extend({
   name: "App",
 
-  components: {},
+  components: {
+    Header
+  },
 
   data: () => ({
     //
