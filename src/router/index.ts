@@ -27,7 +27,7 @@ const routes: Array<RouteConfig> = [
         path: ":id",
         component: () =>
           import(
-            /* webpackChunkName: "user" */ "../pages/users/UsersShowPage.vue"
+            /* webpackChunkName: "user" */ "../pages/users/UsersEditPage.vue"
           ),
         props: true
       },
