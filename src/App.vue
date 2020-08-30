@@ -1,11 +1,9 @@
 <template>
   <v-app>
-    <v-navigation-drawer app>
-      <ul>
-        <li>Users</li>
-      </ul>
+    <v-navigation-drawer v-model="isOpen" absolute temporary>
+      <NavigationDrawer />
     </v-navigation-drawer>
-    <Header />
+    <Header :onClickMenu="onClickMenu" />
     <v-main>
       <v-container fluid>
         <router-view />
@@ -17,16 +15,26 @@
 <script lang="ts">
 import Vue from "vue";
 import Header from "./components/Header.vue";
+import NavigationDrawer from "./components/NavigationDrawer.vue";
 
 export default Vue.extend({
   name: "App",
 
   components: {
-    Header
+    Header,
+    NavigationDrawer
   },
 
-  data: () => ({
-    //
-  })
+  methods: {
+    onClickMenu() {
+      this.isOpen = true;
+    }
+  },
+
+  data() {
+    return {
+      isOpen: false
+    };
+  }
 });
 </script>
