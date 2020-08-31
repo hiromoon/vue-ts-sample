@@ -3,7 +3,6 @@
     <h1>Users > {{ id }} Edit Page</h1>
 
     <v-form v-model="valid">
-      <v-text-field v-model="user.id" label="id" disabled></v-text-field>
       <v-text-field v-model="user.name" label="Name"></v-text-field>
       <v-text-field v-model="user.email" label="Email"></v-text-field>
       <v-btn color="success" class="mr-4" @click="updateUser">
