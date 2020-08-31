@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Users > {{ id }} Edit Page</h1>
-
+    <v-btn color="error" @click="deleteUser">Remove</v-btn>
     <v-form v-model="valid">
       <v-text-field v-model="user.name" label="Name"></v-text-field>
       <v-text-field v-model="user.email" label="Email"></v-text-field>
@@ -52,6 +52,20 @@ export default Vue.extend({
           mode: "cors"
         });
         this.user = await res.json();
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    async deleteUser() {
+      try {
+        const res = await fetch(`http://localhost:3000/users/${this.id}`, {
+          method: "DELETE",
+          mode: "cors"
+        });
+        if (!res.ok) {
+          throw new Error("network error");
+        }
+        this.$router.push({ path: "/users" });
       } catch (err) {
         console.error(err);
       }
