@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-btn color="success" @click="navigateToNew">new</v-btn>
     <v-simple-table>
       <template v-slot:default>
         <thead>
@@ -48,6 +49,9 @@ export default Vue.extend({
 
     navigateToShow(userId: string) {
       this.$router.push({ path: "/users/" + userId });
+    },
+    navigateToNew() {
+      this.$router.push({ path: "/users/new" });
     }
   }
 });
