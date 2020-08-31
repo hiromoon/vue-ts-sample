@@ -1,7 +1,19 @@
 <template>
   <div>
     <h1>Users > {{ id }} Edit Page</h1>
-    <v-btn color="error" @click="deleteUser">Remove</v-btn>
+    <v-btn color="error" @click.stop="showDialog">Remove</v-btn>
+    <v-dialog v-model="dialog" max-width="290">
+      <v-card>
+        <v-card-title>Remove Confirmation</v-card-title>
+
+        <v-card-text>Will you remove below user, ok? </v-card-text>
+        <v-card-text>User id: {{ id }} </v-card-text>
+        <v-card-action>
+          <v-btn color="default" @click="dismissDialog">Cancel</v-btn>
+          <v-btn color="error" @click="deleteUser">Remove</v-btn>
+        </v-card-action>
+      </v-card>
+    </v-dialog>
     <v-form v-model="valid">
       <v-text-field v-model="user.name" label="Name"></v-text-field>
       <v-text-field v-model="user.email" label="Email"></v-text-field>
@@ -25,7 +37,8 @@ export default Vue.extend({
         id: null,
         name: null,
         email: null
-      }
+      },
+      dialog: false
     };
   },
   created() {
@@ -65,10 +78,17 @@ export default Vue.extend({
         if (!res.ok) {
           throw new Error("network error");
         }
+        this.dismissDialog();
         this.$router.push({ path: "/users" });
       } catch (err) {
         console.error(err);
       }
+    },
+    showDialog() {
+      this.dialog = true;
+    },
+    dismissDialog() {
+      this.dialog = false;
     }
   }
 });
